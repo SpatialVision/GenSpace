@@ -1,0 +1,1 @@
+There is a <cow>. Set <chair> in front of <cow>, from the <cow>'s perspective.
