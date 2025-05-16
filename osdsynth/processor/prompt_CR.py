@@ -58,7 +58,7 @@ def CR_two_front(A, B):
     
     check = position and direction
     
-    question_template = f"Is [A] and [B] side-by-side with viewed from the front of [A]?"
+    question_template = f"Are [A] and [B] maintaining their original relative relationship when viewed from the front of [A]?"
     question = question_template.replace("[A]", A_desc).replace("[B]", B_desc)
     
     answer = "Yes" if check else "No"
@@ -123,7 +123,7 @@ def CR_two_back(A, B):
     
     check = position and direction
     
-    question_template = f"Is [A] and [B] side-by-side with viewed from the back of [A]?"
+    question_template = f"Are [A] and [B] maintaining their original relative relationship when viewed from the back of [A]?"
     question = question_template.replace("[A]", A_desc).replace("[B]", B_desc)
     
     answer = "Yes" if check else "No"
@@ -188,7 +188,7 @@ def CR_two_left(A, B):
     
     check = position and direction
     
-    question_template = f"Is [A] and [B] side-by-side with viewed from the left of [A]?"
+    question_template = f"Are [A] and [B] maintaining their original relative relationship when viewed from the left of [A]?"
     question = question_template.replace("[A]", A_desc).replace("[B]", B_desc)
     
     answer = "Yes" if check else "No"
@@ -255,7 +255,7 @@ def CR_two_right(A, B):
     
     check = position and direction
     
-    question_template = f"Is [A] and [B] side-by-side with viewed from the right of [A]?"
+    question_template = f"Are [A] and [B] maintaining their original relative relationship when viewed from the right of [A]?"
     question = question_template.replace("[A]", A_desc).replace("[B]", B_desc)
     
     answer = "Yes" if check else "No"
@@ -346,7 +346,7 @@ def CR_three_front(A, B, C):
 
 
     check = position and direction
-    question_template = f"Is [A], [B] and [C] side-by-side with viewed from the front of [C]?"
+    question_template = f"Are [A], [B] and [C] maintaining their original relative relationship when viewed from the front of [C]?"
     question = question_template.replace("[A]", A_desc).replace("[B]", B_desc).replace("[C]", C_desc)
     answer = "Yes" if check else "No"
     
@@ -448,7 +448,7 @@ def CR_three_back(A, B, C):
 
 
     check = position and direction
-    question_template = f"Is [A], [B] and [C] side-by-side with viewed from the back of [C]?"
+    question_template = f"Are [A], [B] and [C] maintaining their original relative relationship when viewed from the back of [C]?"
     question = question_template.replace("[A]", A_desc).replace("[B]", B_desc).replace("[C]", C_desc)
     answer = "Yes" if check else "No"
     
@@ -550,7 +550,7 @@ def CR_three_left(A, B, C):
 
 
     check = position and direction
-    question_template = f"Is [A], [B] and [C] side-by-side with viewed from the left of [C]?"
+    question_template = f"Are [A], [B] and [C] maintaining their original relative relationship when viewed from the left of [C]?"
     question = question_template.replace("[A]", A_desc).replace("[B]", B_desc).replace("[C]", C_desc)
     answer = "Yes" if check else "No"
     
@@ -652,7 +652,7 @@ def CR_three_right(A, B, C):
 
 
     check = position and direction
-    question_template = f"Is [A], [B] and [C] side-by-side with viewed from the right of [C]?"
+    question_template = f"Are [A], [B] and [C] maintaining their original relative relationship when viewed from the right of [C]?"
     question = question_template.replace("[A]", A_desc).replace("[B]", B_desc).replace("[C]", C_desc)
     answer = "Yes" if check else "No"
     
