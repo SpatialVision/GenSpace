@@ -74,10 +74,7 @@ class SegmentImage:
             box_threshold=self.cfg.box_threshold,
             text_threshold=self.cfg.text_threshold,
         )
-        image_rgb_pil.save('tmp.png')
-        print('two_class:', two_class)
-        if len(detections.class_id) != len(classes):
-            print("DO HUMAN CHECK")
+
 
         if len(detections.class_id) < 1:
             raise SkipImageException("No object detected.")
@@ -165,10 +162,6 @@ class SegmentImage:
                     raise SkipImageException("Not all objects detected.")
             
         
-        # image_tagged = add_bbox_and_taggingtext_to_image(image_bgr, detections_list)
-        # save image
-        # cv2.imwrite("tmp_tagged.jpg", image_tagged)
-        
 
         if plot_som:
             # Visualize with SoM
@@ -186,8 +179,7 @@ class SegmentImage:
             
         return vis_som, detections_list
 
-
-# 从mask_crop和image_crop中分割出不含背景的物体
+#  Copy the object area from the original image to a transparent background
 def segmentImage(detections_list, image_rgb_pil):
     
     for i in range(len(detections_list)):
@@ -196,14 +188,13 @@ def segmentImage(detections_list, image_rgb_pil):
         
         image_rgba = image_pil.convert("RGBA")
         
-        # 创建一个全透明的背景图（与原始图尺寸相同）
         transparent_bg = Image.new("RGBA", image_rgba.size, (0, 0, 0, 0))
 
-        # 使用掩码将物体区域从原图复制到透明背景上
+        # Copy the object area from the original image to a transparent background using a mask
         segmented_image = Image.composite(
-            image_rgba,       # 原图的物体区域
-            transparent_bg,   # 透明背景
-            mask_pil          # 掩码（白色为物体，黑色为背景）
+            image_rgba,       
+            transparent_bg,
+            mask_pil          
         )
         
         detections_list[i]['image_segment'] = segmented_image
@@ -216,7 +207,6 @@ def skipbyconfidence(detections_list):
         if detections_list[i]['confidence'] < 0.3:
             skip_index.append(i)
     
-    # 删除不符合条件的项
     for i in skip_index[::-1]:
         del detections_list[i]
     
@@ -234,7 +224,7 @@ def add_bbox_and_taggingtext_to_image(image, detections_list):
     return image
 
 def add_index_to_class(detections_list):
-    #如果某个class第一次出现，就把这个对象的class_name后面加上0，第二次出现就加上1，以此类推
+    # If a class appears for the first time, add 0 to the object's class_name, add 1 to the second appearance, and so on
     class_index = {}
     for detection in detections_list:
         class_name = detection['class_name']
@@ -242,7 +232,7 @@ def add_index_to_class(detections_list):
             class_index[class_name] = 0
         else:
             class_index[class_name] += 1
-        # 新增字段，保留原始类名
+
         detection['class_name'] = f"{class_name}{class_index[class_name]}"
     return detections_list
         

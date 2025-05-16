@@ -96,7 +96,6 @@ class PointCloudReconstruction:
         n_objects = len(detections_list)
 
         for obj_idx in range(n_objects):
-            # 求bbox的面积（用以比较大小）
             if detections_list[obj_idx]["xyxy"][0] > cano_pts3d.shape[1]:
                 detections_list[obj_idx]["xyxy"][0] = cano_pts3d.shape[1]-1
             if detections_list[obj_idx]["xyxy"][1] > cano_pts3d.shape[0]:
@@ -110,14 +109,7 @@ class PointCloudReconstruction:
             
             detections_list[obj_idx]["left_edge"] = -cano_pts3d[int((int(bbox[1])+int(bbox[3]))/ 2)][0][0]
             detections_list[obj_idx]["right_edge"] = -cano_pts3d[int((int(bbox[1])+int(bbox[3]))/ 2)][-1][0]
-            # detections_list[obj_idx]["top_edge"] = cano_pts3d[0][int((int(bbox[0])+int(bbox[2])/ 2))][1]
-            # detections_list[obj_idx]["bottom_edge"] = cano_pts3d[-1][int((int(bbox[0])+int(bbox[2])/ 2))][1]
-            
-            
-            
-            # point_1 = cano_pts3d[int(bbox[1])][int(bbox[0])]
-            # point_2 = cano_pts3d[int(bbox[3])][int(bbox[2])]
-            # detections_list[obj_idx]["square"] = get_square(point_1, point_2)
+
             detections_list[obj_idx]["square"] = np.abs((int(bbox[1])-int(bbox[3]))*(int(bbox[0])-int(bbox[2])))
             
             xc = int(intrinsic[0, 2])

@@ -30,9 +30,9 @@ class Rotation:
         R = np.array([[-math.sin(phi), 0, -math.cos(phi)],
                         [math.cos(phi) * math.sin(theta), -math.cos(theta), -math.sin(phi) * math.sin(theta)],
                         [-math.cos(phi) * math.cos(theta), -math.sin(theta), math.sin(phi) * math.cos(theta)]
-                    ]) # 相机看来，物体的位姿
+                    ]) # The position of the object as seen by the camera
         
-        # R绕世界坐标系的Z轴旋转gamma
+        # R rotates gamma around the z-axis of the world coordinate system
         gamma = gamma * math.pi / 180
         R = np.dot(R, np.array([[math.cos(gamma), -math.sin(gamma), 0],
                                 [math.sin(gamma), math.cos(gamma), 0],
@@ -81,10 +81,10 @@ class Rotation:
             # image_segment_wobg = detection_list[i]['image_segment']
             image_segment_wbg = detection_list[i]['image_crop']
             
-            # 物体为中心的参考系，相机的位姿
+            # object-centered reference system, the camera's bit position
             rotation_matrix, confidence = self.process_single(image_segment_wbg, do_rm_bkg=do_rm_bkg, do_infer_aug=do_infer_aug)
             
-            # 对相机而言，物体的位姿
+            # For the camera, the position and rotation of the object
             detection_list[i]['rotation_matrix'] = rotation_matrix 
             detection_list[i]['rotation_matrix_confidence'] = confidence
             
