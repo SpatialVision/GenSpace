@@ -9,7 +9,6 @@ from osdsynth.Orient_Anything.utils import *
 from osdsynth.Orient_Anything.inference import *
 from osdsynth.utils.logger import SkipImageException
 
-ckpt_path = '/data2/projects/SpatialRGPT/dataset_pipeline/osdsynth/Orient_Anything/dino_weight.pt'
 
 class Rotation:
     def __init__(self, cfg, logger, device):
@@ -21,7 +20,7 @@ class Rotation:
                     mask_dino   = False,
                     frozen_back = False
                 ).eval()
-        self.rotation_model.load_state_dict(torch.load(ckpt_path, map_location='cpu'))
+        self.rotation_model.load_state_dict(torch.load(cfg.rotation_model_ckpt_path, map_location='cpu'))
         self.rotation_model = self.rotation_model.to(device)
         self.val_preprocess = AutoImageProcessor.from_pretrained(DINO_LARGE, cache_dir='./')
         self.logger = logger

@@ -7,4 +7,4 @@ wget -c  wget https://huggingface.co/spaces/xinyu1205/Tag2Text/resolve/main/ram_
 # PerspectiveFields
 wget -c  https://www.dropbox.com/s/z2dja70bgy007su/paramnet_360cities_edina_rpf.pth -P osdsynth/external/PerspectiveFields/models
 
-wget -c https://huggingface.co/Viglong/OriNet/blob/main/croplargeEX2/dino_weight.pt -P '/data/genspace/osdsynth/Orient_Anything/dino_weight.pt'
+wget -c https://huggingface.co/Viglong/OriNet/blob/main/croplargeEX2/dino_weight.pt -P 'osdsynth/Orient_Anything/dino_weight.pt'

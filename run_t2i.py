@@ -182,22 +182,22 @@ def annotate(cfg, segmenter, rotation, reconstructor, captioner, prompter, globa
     
     if correct_before_spatialQA_total_sum > 0:
         acc = 1.0 * correct_sum / correct_before_spatialQA_total_sum
-        with open(f'/data2/projects/SpatialRGPT/dataset_pipeline/output_file/acc/acc_{postfix}.txt', 'a') as f:
+        with open(f'output_file/acc/acc_{postfix}.txt', 'a') as f:
             f.write(f"{class_index}: {acc}\n")
     else:
-        with open(f'/data2/projects/SpatialRGPT/dataset_pipeline/output_file/acc/acc_{postfix}.txt', 'a') as f:
+        with open(f'output_file/acc/acc_{postfix}.txt', 'a') as f:
             f.write(f"{class_index}: {0}\n")
         
     # 把gt_list写到txt中，每行一个
     score_avg = 1.0 * score_sum / correct_before_spatialQA_total_sum if correct_before_spatialQA_total_sum > 0 else 0
-    with open(f'/data2/projects/SpatialRGPT/dataset_pipeline/output_file/gt_list/gt_list_{postfix}.txt', 'a') as f:
+    with open(f'output_file/gt_list/gt_list_{postfix}.txt', 'a') as f:
         f.write(f"all: {all_sum}, total(pass the segment and reconstructor):{correct_before_spatialQA_total_sum}\ncorrect:{correct_sum}, error(not pass the segment or reconstructor):{all_sum-correct_before_spatialQA_total_sum}\nscores_avg:{score_avg}\n")
     
-    with open(f'/data2/projects/SpatialRGPT/dataset_pipeline/output_file/gt_list/gt_list_{postfix}.txt', 'a') as f:
+    with open(f'output_file/gt_list/gt_list_{postfix}.txt', 'a') as f:
         for item in gt_list:
             f.write(f"{item}\n")
             
-    with open(f'/data2/projects/SpatialRGPT/dataset_pipeline/output_file/notpass/not_pass_segment_{postfix}.txt', 'a') as f:
+    with open(f'output_file/notpass/not_pass_segment_{postfix}.txt', 'a') as f:
         for item in not_pass_segment_list:
             f.write(f"{item}\n")
 

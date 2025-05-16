@@ -85,7 +85,7 @@ def main(args):
         annotate(cfg, segmenter, rotation, reconstructor, captioner, prompter, global_data, logger, device, class_index)
 
 
-preprocess_base_path = '/data2/projects/SpatialRGPT/dataset_pipeline/output_file/CR/preprocess'
+preprocess_base_path = 'output_file/CR/preprocess'
 
 def annotate(cfg, segmenter, rotation, reconstructor, captioner, prompter, global_data, logger, device, class_index):
 
