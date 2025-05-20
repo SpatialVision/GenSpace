@@ -838,7 +838,7 @@ def camera_leftward_1meter(A):
     distance = A_pos[0] - A['last_pos'][0]
     
     delta = 1.0/3
-    gt_distance = -1
+    gt_distance = 1
     
     check = (1+delta)*gt_distance < distance and distance < (1-delta)*gt_distance
 
@@ -865,7 +865,7 @@ def camera_rightward_1meter(A):
     distance = A_pos[0] - A['last_pos'][0]
     
     delta = 1.0/3
-    gt_distance = 1
+    gt_distance = -1
     
     check = (1-delta)*gt_distance < distance and distance < (1+delta)*gt_distance
 

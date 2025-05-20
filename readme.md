@@ -139,7 +139,7 @@ python run_t2i.py --config configs/v2.py --input example/t2i
 
 
 
-For Image task, here is also an example:
+For Imageedit task, here is also an example:
 
 ```bash
 # Preprocess these files to extract information such as the position and orientation of objects before editing (if necessary)
@@ -148,9 +148,14 @@ python run_imageedit_preprocess.py --config configs/v2.py --input example/imagee
 python run_imageedit.py --config configs/v2.py --input example/imageedit
 ```
 
+For the Sub-domain Complex **Relation**, its inference method is different from other subdomains. Here is an example:
 
+```bash
+# Preprocess these files to extract information such as the position and orientation of objects before editing (if necessary)
+python run_imageedit_CR_preprocess.py --config configs/v2.py --input example/imageedit_CR_unedit
 
-
+python run_imageedit_CR.py --config configs/v2.py --input example/imageedit_CR
+```
 
 
 
